@@ -1,18 +1,24 @@
 /*
-  Tema São Paulo FC
-  Cores (hexadecimal citado por teamcolorcodes.com e brandcolorcode.com):
-    vermelho #FE0000, preto #000000, branco #FFFFFF
-  Uso: preto como cor principal (cabeçalho, títulos, cartões),
-       vermelho como destaque (botões, linhas e bordas) e branco como fundo.
-  Observação: o manual de marca oficial do clube não foi encontrado,
-  então esses valores vêm de fontes de terceiros.
+  Tema São Paulo FC, baseado no estilo do site oficial (saopaulofc.net).
+  Valores lidos do CSS do tema do site (variáveis :root em tipografia.css):
+    --v  #CB0017  vermelho
+    --h  #1A1A1A  preto de cabeçalho/rodapé
+    --p  #000000  preto de texto
+    --b  #FFFFFF  branco
+    --c2 #F8F8F8  fundo dos cartões
+    --c3 #4E4E4E  cinza de texto
+  O site usa a fonte "Museo Sans" (Adobe Fonts); aqui entra uma fonte do sistema.
+  Botões: fundo vermelho, hover preto, peso 900, padding 10px 25px.
+  Sombra dos cartões: 0 3px 6px rgba(0, 0, 0, 0.16).
 */
 :root {
-  --spfc-vermelho: #fe0000;
-  --spfc-vermelho-escuro: #cc0000;
+  --spfc-vermelho: #cb0017;
+  --spfc-preto-suave: #1a1a1a;
   --spfc-preto: #000000;
   --spfc-branco: #ffffff;
-  --spfc-cinza-claro: #f2f2f2;
+  --spfc-cartao: #f8f8f8;
+  --spfc-cinza: #4e4e4e;
+  --spfc-cinza-claro: #f0f0f0;
 }
 
 * {
@@ -21,109 +27,143 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Museo Sans', 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
   color: var(--spfc-preto);
   background: var(--spfc-branco);
 }
 
-/* Faixa tricolor no topo da página: preto, vermelho e branco */
+/* Faixa vermelha no topo, como o menu do site */
 body::before {
   content: '';
   display: block;
-  height: 18px;
+  height: 4px;
+  background: var(--spfc-vermelho);
+}
+
+/* Rodapé: faixa vermelha, branca e bloco preto, como no site */
+body::after {
+  content: '';
+  display: block;
+  height: 64px;
+  margin-top: 40px;
   background: linear-gradient(
     to bottom,
-    var(--spfc-preto) 0 6px,
-    var(--spfc-vermelho) 6px 12px,
-    var(--spfc-branco) 12px 18px
+    var(--spfc-vermelho) 0 6px,
+    var(--spfc-branco) 6px 9px,
+    var(--spfc-preto) 9px 64px
   );
-  border-bottom: 1px solid var(--spfc-preto);
 }
 
 main {
-  max-width: 880px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 20px;
 }
 
+/* Cabeçalho preto do site */
 h1 {
-  margin: 0 0 20px;
-  padding: 18px 24px;
-  font-size: 1.8rem;
+  margin: 0 0 24px;
+  padding: 16px 24px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   color: var(--spfc-branco);
-  background: var(--spfc-preto);
-  border-bottom: 6px solid var(--spfc-vermelho);
-  border-radius: 6px;
+  background: var(--spfc-preto-suave);
+  border-top: 4px solid var(--spfc-vermelho);
 }
 
+/* Títulos grandes: preto, caixa alta, peso 900 */
 h2 {
+  margin: 24px 0 12px;
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
   color: var(--spfc-preto);
-  border-bottom: 2px solid var(--spfc-vermelho);
-  padding-bottom: 6px;
 }
 
-h3,
+/* Rótulo vermelho, como "Brasileirão 2026" nos cartões */
+h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--spfc-vermelho);
+}
+
 h4 {
+  margin: 0 0 8px;
+  font-weight: 900;
   color: var(--spfc-preto);
 }
 
-/* Cartões e seções com lateral preta */
+p {
+  color: var(--spfc-preto);
+}
+
+/* Cartões cinza claro com sombra suave, sem borda */
 section {
-  background: var(--spfc-branco);
-  border: 1px solid var(--spfc-vermelho);
-  border-left: 6px solid var(--spfc-preto) !important;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   margin-top: 16px;
-  padding: 14px 18px;
+  padding: 16px 20px;
+  background: var(--spfc-cartao);
+  border: 0 !important;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 hr {
   border: 0;
-  border-top: 2px solid var(--spfc-preto);
+  border-top: 2px solid var(--spfc-vermelho);
 }
 
-/* Botões vermelhos com detalhe preto */
+/* Botão padrão do site: vermelho, hover preto, peso 900 */
 button {
   margin-right: 6px;
-  padding: 7px 16px;
-  font-weight: bold;
+  padding: 10px 25px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 19px;
   color: var(--spfc-branco);
   background: var(--spfc-vermelho);
   border: 0;
-  border-bottom: 3px solid var(--spfc-preto);
-  border-radius: 4px;
+  border-radius: 0;
   cursor: pointer;
 }
 
 button:hover:not(:disabled) {
-  background: var(--spfc-vermelho-escuro);
+  background: var(--spfc-preto);
 }
 
 button:disabled {
-  color: #666666;
-  background: var(--spfc-cinza-claro);
-  border-bottom-color: #bbbbbb;
+  color: var(--spfc-cinza);
+  background: #cfcfcf;
   cursor: not-allowed;
 }
 
 input,
 select {
-  padding: 7px 10px;
+  padding: 9px 12px;
+  font-family: inherit;
+  font-size: 15px;
   color: var(--spfc-preto);
   background: var(--spfc-branco);
-  border: 2px solid var(--spfc-vermelho);
-  border-radius: 4px;
+  border: 1px solid var(--spfc-cinza);
+  border-radius: 0;
 }
 
 input:focus,
 select:focus {
-  outline: 3px solid rgba(0, 0, 0, 0.45);
-  border-color: var(--spfc-preto);
+  outline: 2px solid var(--spfc-vermelho);
+  border-color: var(--spfc-vermelho);
+}
+
+ul {
+  padding-left: 22px;
 }
 
 li {
-  margin: 4px 0;
+  margin: 6px 0;
 }
 
 li::marker {

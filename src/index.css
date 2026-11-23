@@ -1,14 +1,15 @@
 /*
   Tema São Paulo FC
   Cores (hexadecimal citado por teamcolorcodes.com e brandcolorcode.com):
-    1ª vermelho #FE0000  - cor principal (cabeçalho, títulos, destaques)
-    2ª preto    #000000  - botões, textos e bordas
-    3ª branco   #FFFFFF  - fundo e cartões
+    vermelho #FE0000, preto #000000, branco #FFFFFF
+  Uso: preto como cor principal (cabeçalho, títulos, cartões),
+       vermelho como destaque (botões, linhas e bordas) e branco como fundo.
   Observação: o manual de marca oficial do clube não foi encontrado,
   então esses valores vêm de fontes de terceiros.
 */
 :root {
   --spfc-vermelho: #fe0000;
+  --spfc-vermelho-escuro: #cc0000;
   --spfc-preto: #000000;
   --spfc-branco: #ffffff;
   --spfc-cinza-claro: #f2f2f2;
@@ -25,15 +26,15 @@ body {
   background: var(--spfc-branco);
 }
 
-/* Faixa tricolor no topo da página, na ordem 1ª, 2ª e 3ª cor */
+/* Faixa tricolor no topo da página: preto, vermelho e branco */
 body::before {
   content: '';
   display: block;
   height: 18px;
   background: linear-gradient(
     to bottom,
-    var(--spfc-vermelho) 0 6px,
-    var(--spfc-preto) 6px 12px,
+    var(--spfc-preto) 0 6px,
+    var(--spfc-vermelho) 6px 12px,
     var(--spfc-branco) 12px 18px
   );
   border-bottom: 1px solid var(--spfc-preto);
@@ -50,14 +51,14 @@ h1 {
   padding: 18px 24px;
   font-size: 1.8rem;
   color: var(--spfc-branco);
-  background: var(--spfc-vermelho);
-  border-bottom: 6px solid var(--spfc-preto);
+  background: var(--spfc-preto);
+  border-bottom: 6px solid var(--spfc-vermelho);
   border-radius: 6px;
 }
 
 h2 {
-  color: var(--spfc-vermelho);
-  border-bottom: 2px solid var(--spfc-preto);
+  color: var(--spfc-preto);
+  border-bottom: 2px solid var(--spfc-vermelho);
   padding-bottom: 6px;
 }
 
@@ -66,11 +67,11 @@ h4 {
   color: var(--spfc-preto);
 }
 
-/* Cartões e seções com lateral vermelha */
+/* Cartões e seções com lateral preta */
 section {
   background: var(--spfc-branco);
-  border: 1px solid var(--spfc-preto);
-  border-left: 6px solid var(--spfc-vermelho) !important;
+  border: 1px solid var(--spfc-vermelho);
+  border-left: 6px solid var(--spfc-preto) !important;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   margin-top: 16px;
@@ -79,24 +80,24 @@ section {
 
 hr {
   border: 0;
-  border-top: 2px solid var(--spfc-vermelho);
+  border-top: 2px solid var(--spfc-preto);
 }
 
-/* Botões pretos com detalhe vermelho (texto branco com contraste alto) */
+/* Botões vermelhos com detalhe preto */
 button {
   margin-right: 6px;
   padding: 7px 16px;
   font-weight: bold;
   color: var(--spfc-branco);
-  background: var(--spfc-preto);
+  background: var(--spfc-vermelho);
   border: 0;
-  border-bottom: 3px solid var(--spfc-vermelho);
+  border-bottom: 3px solid var(--spfc-preto);
   border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover:not(:disabled) {
-  background: #333333;
+  background: var(--spfc-vermelho-escuro);
 }
 
 button:disabled {
@@ -111,14 +112,14 @@ select {
   padding: 7px 10px;
   color: var(--spfc-preto);
   background: var(--spfc-branco);
-  border: 2px solid var(--spfc-preto);
+  border: 2px solid var(--spfc-vermelho);
   border-radius: 4px;
 }
 
 input:focus,
 select:focus {
-  outline: 3px solid rgba(254, 0, 0, 0.45);
-  border-color: var(--spfc-vermelho);
+  outline: 3px solid rgba(0, 0, 0, 0.45);
+  border-color: var(--spfc-preto);
 }
 
 li {

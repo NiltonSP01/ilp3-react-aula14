@@ -1,4 +1,121 @@
+/* Tema São Paulo FC: vermelho, branco e preto (cores aproximadas) */
+:root {
+  --spfc-vermelho: #e30613;
+  --spfc-vermelho-escuro: #b00510;
+  --spfc-preto: #111111;
+  --spfc-branco: #ffffff;
+  --spfc-fundo: #f3f3f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  color: var(--spfc-preto);
+  background: var(--spfc-fundo);
+}
+
+/* Faixa tricolor no topo da página */
+body::before {
+  content: '';
+  display: block;
+  height: 18px;
+  background: linear-gradient(
+    to bottom,
+    var(--spfc-vermelho) 0 6px,
+    var(--spfc-branco) 6px 12px,
+    var(--spfc-preto) 12px 18px
+  );
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0 0 20px;
+  padding: 18px 24px;
+  font-size: 1.8rem;
+  color: var(--spfc-branco);
+  background: var(--spfc-vermelho);
+  border-bottom: 6px solid var(--spfc-preto);
+  border-radius: 6px;
+}
+
+h2 {
+  color: var(--spfc-vermelho);
+  border-bottom: 2px solid var(--spfc-preto);
+  padding-bottom: 6px;
+}
+
+h3,
+h4 {
+  color: var(--spfc-preto);
+}
+
+/* Cartões e seções com lateral vermelha */
+section {
+  background: var(--spfc-branco);
+  border: 1px solid #dddddd;
+  border-left: 6px solid var(--spfc-vermelho) !important;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-top: 16px;
+  padding: 14px 18px;
+}
+
+hr {
+  border: 0;
+  border-top: 2px solid var(--spfc-vermelho);
+}
+
+button {
+  margin-right: 6px;
+  padding: 7px 16px;
+  font-weight: bold;
+  color: var(--spfc-branco);
+  background: var(--spfc-vermelho);
+  border: 0;
+  border-bottom: 3px solid var(--spfc-preto);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--spfc-vermelho-escuro);
+}
+
+button:disabled {
+  color: #666666;
+  background: #cccccc;
+  border-bottom-color: #999999;
+  cursor: not-allowed;
+}
+
+input,
+select {
+  padding: 7px 10px;
+  color: var(--spfc-preto);
+  background: var(--spfc-branco);
+  border: 2px solid var(--spfc-preto);
+  border-radius: 4px;
+}
+
+input:focus,
+select:focus {
+  outline: 3px solid rgba(227, 6, 19, 0.45);
+  border-color: var(--spfc-vermelho);
+}
+
+li {
+  margin: 4px 0;
+}
+
+li::marker {
+  color: var(--spfc-vermelho);
 }
